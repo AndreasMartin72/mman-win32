@@ -1,7 +1,7 @@
+#ifndef __GNUC__
 
-#include <windows.h>
-#include <errno.h>
 #include <io.h>
+#include <errno.h>
 
 #include "mman.h"
 
@@ -13,7 +13,7 @@ static int __map_mman_error(const DWORD err, const int deferr)
 {
     if (err == 0)
         return 0;
-    //TODO: implement
+    /*TODO: implement*/
     return err;
 }
 
@@ -89,7 +89,7 @@ void* mmap(void *addr, size_t len, int prot, int flags, int fildes, off_t off)
     if (len == 0 
         /* Unsupported flag combinations */
         || (flags & MAP_FIXED) != 0
-        /* Usupported protection combinations */
+        /* Unsupported protection combinations */
         || prot == PROT_EXEC)
     {
         errno = EINVAL;
@@ -178,3 +178,5 @@ int munlock(const void *addr, size_t len)
     
     return -1;
 }
+
+#endif /*__GNUC__*/
