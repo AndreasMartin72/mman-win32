@@ -1,7 +1,8 @@
-#ifndef __GNUC__
+#if defined(_WIN32) 
 
 #include <io.h>
 #include <errno.h>
+#include <windows.h>
 
 #include "mman.h"
 
